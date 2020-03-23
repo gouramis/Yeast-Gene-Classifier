@@ -8,6 +8,8 @@ it for you and display all the results. To just view the code,
 click on the `yeastclassifier.py` file, and only the code will be displayed.  
 ## Results  
 Here is a plot to map the weights for the CYT class over each epoch:  
+![alt text](https://github.com/gouramis/Yeast-Gene-Classifier/blob/master/plotWeights.png)  
+Here is a plot of the test and train error over each iteration:  
 ![alt text](https://github.com/gouramis/Yeast-Gene-Classifier/blob/master/plotTestTrainError.png)  
 
   
