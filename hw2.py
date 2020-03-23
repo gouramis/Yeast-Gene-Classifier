@@ -12,8 +12,7 @@ from sklearn.svm import OneClassSVM
 from sklearn.ensemble import IsolationForest
 #grab datafile using pandas
 dataFrame = pd.read_csv("yeast.data", delim_whitespace=1, names=["mcg","gvh","alm","mit","erl","pox","vac","nuc","class"])
-#print(dataFrame)
-#Problem 1
+
 #outlier detection using Isolation Forest:
 df = dataFrame.drop(columns="class")
 dfOnlyClasses = dataFrame.drop(columns=["mcg","gvh","alm","mit","erl","pox","vac","nuc"])
@@ -46,7 +45,6 @@ print(len(outliersWithOCSVM))
 # In[2]:
 
 
-#Problem 2
 #import what's needed to build ann
 import keras
 from keras.models import Sequential
@@ -63,7 +61,7 @@ enc = OneHotEncoder()
 enc.fit(dfOnlyClasses)
 OneHotEncoder(categorical_features=None, categories=None, drop=None, handle_unknown='ignore', n_values=None)
 y = enc.transform(dfOnlyClasses).toarray()
-#print(y) #test
+
 import numpy as np
 np.set_printoptions(threshold=np.inf)
 y = np.array(y)
@@ -113,7 +111,7 @@ history = model.fit(
   validation_split=0.1,
   callbacks=[callback]
 )
-#print(history.history.keys())
+
 #test model using training set:
 loss, accuracy = model.evaluate(
   X_test,
@@ -168,14 +166,13 @@ plt.show()
 # In[3]:
 
 
-#Problem 3
+
 #create df including all data as stated in directions
 dataFrameWithAllData = pd.read_csv("yeast.data", delim_whitespace=1, names=["mcg","gvh","alm","mit","erl","pox","vac","nuc","class"])
 dfe = dataFrameWithAllData.drop(columns="class")
 #grab classes for model:
 cdfe = dataFrameWithAllData.drop(columns=["mcg","gvh","alm","mit","erl","pox","vac","nuc"])
-#print(cdfe) #test
-#print(dfe) #test
+
 #use new one hot encoder for new y column vector
 from sklearn.preprocessing import LabelEncoder
 #label encode for decoding later:
@@ -225,7 +222,7 @@ print(accuracy)
 # In[4]:
 
 
-#Problem 5
+
 X_train= np.array(X_train)
 def createModel(i,j):
     modelSearch = Sequential()
@@ -258,7 +255,7 @@ for i in range(1,4):
 # In[5]:
 
 
-#Problem 6
+
 #create np array for prediction
 x = np.array([[0.52], [0.47], [0.52], [0.23], [0.55], [0.03], [0.52], [0.39]])
 #using model for prediction, change model name for two seperate models!
@@ -270,7 +267,7 @@ print(prediction)
 # In[6]:
 
 
-#Problem 7
+
 newModel = Sequential()
 newModel.add(Dense(3, activation='relu', input_dim=8))
 newModel.add(Dense(3, activation='relu'))
